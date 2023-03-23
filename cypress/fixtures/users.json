@@ -1,0 +1,30 @@
+{
+    "success": {
+        "name": "Renato",
+        "email": "renato@hotmail.com",
+        "password": "12345678"
+    },
+    "invpass": {
+        "email": "renato@hotmail.com",
+        "password": "123456"
+    },
+    "email404": {
+        "email": "renato@hotmail.com.br",
+        "password": "12345678"
+    },
+    "shortpass": [
+        "1",
+        "12",
+        "123",
+        "1234",
+        "12345"
+    ],
+    "invemails": [
+        "renato.com.br",
+        "renato#com.br",
+        "@",
+        "renato@",
+        "@com.br",
+        "*&%%#%"
+    ]
+}
