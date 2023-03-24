@@ -3,10 +3,11 @@ const express = require('express')
 const app = express()
 
 app.use(express.json())
+
 const { deleteUser, insertUser } = require('./db')
 
-app.get('/', function (req, res) {
-    res.json({ message: 'Olá QaX' })
+app.get('/welcome', function (req, res) {
+    res.json({ message: 'Ola QAx' })
 })
 
 app.delete('/user/:email', async function (req, res) {
@@ -18,6 +19,7 @@ app.delete('/user/:email', async function (req, res) {
 app.post('/user', async function (req, res) {
     const { name, email, password, is_shaver } = req.body
     const hashPass = await bcrypt.hash(password, 8)
+
     const user = {
         name: name,
         email: email,
@@ -25,8 +27,9 @@ app.post('/user', async function (req, res) {
         is_shaver: is_shaver
     }
 
-    if (!user.name || user.email || user.password) {
-        return res.status(400).json({ message: 'todos os campos são obrigatorios' })
+    // debito técnico porque ainda não consegue validar o campo shaver da forma correta
+    if (!user.name || !user.email || !user.password) {
+        return res.status(400).json({message: 'Every field is mandatory.'})
     }
 
     console.log(user)
@@ -34,9 +37,13 @@ app.post('/user', async function (req, res) {
     try {
         await deleteUser(user.email)
         const id = await insertUser(user)
+
         res.status(201).json({ user_id: id })
     } catch (error) {
-        res.status(500).json({ error: 'ocorreu um erro', stack: error })
+        res.status(500).json({ error: 'Ocorreu um erro.', stack: error })
     }
+
+
 })
+
 app.listen(5000)

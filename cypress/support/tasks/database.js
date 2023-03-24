@@ -5,7 +5,6 @@ const dbConfig = {
     password: 'V5ieDXca1zYFWK4Mofj41RIhOF_rDg47',
     database: 'rqmknlwd',
     port: 5432
-
 }
 
 module.exports = {
