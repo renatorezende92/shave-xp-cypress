@@ -9,7 +9,7 @@ describe('login', () => {
 
     context('quando submeto o formulario', () => {
 
-        it('deve logar com sucesso', () => {
+        it.only('deve logar com sucesso', () => {
             const user = data.success
 
             cy.createUser(user)
