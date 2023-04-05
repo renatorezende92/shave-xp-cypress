@@ -1,0 +1,17 @@
+{
+    "customer": {
+        "name": "nine",
+        "email": "nine@gmail.com",
+        "password": "12345678",
+        "is_shaver": false
+    },
+
+    "shaver": {
+        "name": "Jeremy Adams"
+    },
+
+    "service": {
+        "description": "Corte de cabelo",
+        "price": "79,99"
+    }
+}
