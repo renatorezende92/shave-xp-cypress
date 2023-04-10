@@ -1,15 +1,7 @@
-import loginPage from '../support/pages/login'
-import shaversPage from '../support/pages/shavers'
+import loginPage from '../support/pages/views/login'
+import shaversPage from '../support/pages/views/shavers'
 
 Cypress.Commands.add('createUser', (user) => {
-
-    // cy.request({
-    //     method: 'DELETE',
-    //     url: 'http://localhost:5000/user/' + user.email
-    // }).then(function (response) {
-    //     expect(response.status).to.eq(204)
-    // })
-
     cy.log(JSON.stringify(user))
 
     cy.request({
@@ -18,6 +10,15 @@ Cypress.Commands.add('createUser', (user) => {
         body: user
     }).then(function (response) {
         expect(response.status).to.eq(201)
+    })
+})
+
+Cypress.Commands.add('deleteUser', (user) => {
+    cy.request({
+        method: 'DELETE',
+        url: 'http://localhost:5000/user/' + user.email
+    }).then(function (response) {
+        expect(response.status).to.eq(204)
     })
 })
 

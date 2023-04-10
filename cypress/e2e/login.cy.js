@@ -1,9 +1,6 @@
-
-import login from '../support/pages/login'
-import loginPage from '../support/pages/login'
-import shaversPage from '../support/pages/shavers'
-import data from '../fixtures/users.json'
-
+import loginPage from '../support/pages/views/login'
+import shaversPage from '../support/pages/views/shavers'
+import data from '../fixtures/users-login.json'
 
 describe('login', () => {
 
@@ -23,8 +20,7 @@ describe('login', () => {
 
             loginPage.submit(user.email, user.password)
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
-            loginPage.noticeShouldBe(message)
-
+            loginPage.shared.noticeErrorShouldBe(message)
         })
 
         it('não deve logar com email não cadastrado', () => {
@@ -32,7 +28,7 @@ describe('login', () => {
 
             loginPage.submit(user.email, user.password)
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
-            loginPage.noticeShouldBe(message)
+            loginPage.shared.noticeErrorShouldBe(message)
         })
 
         it('campos obrigatorios', () => {
@@ -46,10 +42,9 @@ describe('login', () => {
         data.shortpass.forEach((p) => {
             it(`não deve logar com a senha: ${p} `, () => {
                 loginPage.submit('renato@teste.com', p)
-                loginPage.alertShouldBe('Pelo menos 6 caracteres')
+                loginPage.shared.alertShouldBe('Pelo menos 6 caracteres')
             })
         })
-
     })
 
     context('email no formato invalido', () => {
@@ -57,10 +52,8 @@ describe('login', () => {
         data.invemails.forEach((e) => {
             it(`não deve logar com o email: ${e} `, () => {
                 loginPage.submit(e, '12345678')
-                loginPage.alertShouldBe('Informe um email válido')
+                loginPage.shared.alertShouldBe('Informe um email válido')
             })
         })
-
     })
-
 })
