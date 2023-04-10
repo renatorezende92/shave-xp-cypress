@@ -1,8 +1,8 @@
 
-import header from '../../components/header'
+// import header from '../../components/header'
 class ShaversPage {
     constructor() {
-        this.header = header
+        this.header = null
     }
 
     selectShaver(name) {

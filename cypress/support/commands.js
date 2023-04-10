@@ -1,4 +1,7 @@
-import loginPage from '../support/pages/views/login'
+import './commands/notice'
+import './commands/alert'
+import './commands/login'
+
 import shaversPage from '../support/pages/views/shavers'
 
 Cypress.Commands.add('createUser', (user) => {
@@ -45,7 +48,7 @@ Cypress.Commands.add('getToken', (email) => {
 })
 
 Cypress.Commands.add('uiLogin', (user) => {
-    loginPage.submit(user.email, user.password)
+    // loginPage.submit(user.email, user.password)
     shaversPage.header.userShouldBeLoggedIn(user.name)
 })
 
